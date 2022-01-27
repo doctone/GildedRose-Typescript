@@ -106,5 +106,19 @@ describe('Gilded Rose', function () {
             gildedRose.items.should.deep.equal(expectedItem);
         });
     });
+    
+    describe('Conjured Mana Cake', () => {
+
+        it('lowers in quality twice as fast', () => {
+            const manaCake: Item = new Item('Conjured Mana Cake', 13, 10);
+            const gildedRose = new GildedRose([manaCake]);
+            const expectedItem = [new Item('Conjured Mana Cake', 10, 4)];
+            gildedRose.updateQuality();
+            gildedRose.updateQuality();
+            gildedRose.updateQuality();
+    
+            gildedRose.items.should.deep.equal(expectedItem);
+        });
+    });
 
 });

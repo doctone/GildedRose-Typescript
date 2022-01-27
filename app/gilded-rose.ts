@@ -19,7 +19,8 @@ export class GildedRose {
     isNormal(item) {
         return item !== 'Aged Brie'
             && item !== 'Sulfuras, Hand of Ragnaros'
-            && item !== 'Backstage passes to a TAFKAL80ETC concert';
+            && item !== 'Backstage passes to a TAFKAL80ETC concert'
+            && item !== 'Conjured Mana Cake';
     }
     updateQuality() {
         for (let i = 0; i < this.items.length; i++) {
