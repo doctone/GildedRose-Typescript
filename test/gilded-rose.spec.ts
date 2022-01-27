@@ -55,6 +55,16 @@ describe('Gilded Rose', function () {
         gildedRose.updateQuality();
         gildedRose.items.should.deep.equal(expectedItem);
     })
+    it('never increases quality higher than 50', () => {
+        const item1: Item = new Item('Aged Brie', 4, 49);
+        const gildedRose = new GildedRose([item1]);
+        const expectedItem = [new Item('Aged Brie', 1, 50)];
+        gildedRose.updateQuality();
+        gildedRose.updateQuality();
+        gildedRose.updateQuality();
+   
+        gildedRose.items.should.deep.equal(expectedItem);
+    })
     it('reduces quality by 2 when sellIn value is negative', () => {
         const item1: Item = new Item('item1', -4, 10);
         const gildedRose = new GildedRose([item1]);
