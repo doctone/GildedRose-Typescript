@@ -49,6 +49,9 @@ export class GildedRose {
                     this.items[i].quality = 0;
                 }
             }
+            if (this.items[i].name === 'Conjured Mana Cake'){
+                this.items[i].quality -= 2;
+            }
         }
         for (const item of this.items) {
             if (item.quality < 0) {
