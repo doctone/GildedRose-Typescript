@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import 'chai/register-should';
 import { Item, GildedRose } from '../app/gilded-rose';
 
 describe('Gilded Rose', function () {
@@ -7,14 +8,14 @@ describe('Gilded Rose', function () {
         const expectedItems: Array<Item> = [
             new Item('item1', 2, 5),
             new Item('item2', 1, 12),
-            new Item('item3', 1, 2),
+            new Item('item3', -1, 2),
             new Item('Aged Brie', 7, 6),
-            new Item('Aged Brie', 2, 38),
+            new Item('Aged Brie', -2, 38),
             new Item('Sulfuras, Hand of Ragnaros', 20, 20),
             new Item('Sulfuras, Hand of Ragnaros', 80, 20),
             new Item('Backstage passes to a TAFKAL80ETC concert', 8, 13),
             new Item('Backstage passes to a TAFKAL80ETC concert', 5, 14),
-            new Item('Backstage passes to a TAFKAL80ETC concert', 1, 0)
+            new Item('Backstage passes to a TAFKAL80ETC concert', -1, 0)
 
         ];
         const testItems: Array<Item> = [
