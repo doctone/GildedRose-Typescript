@@ -7,7 +7,7 @@ const items: Array<Item> = [
     new Item('item2', 4, 15),
     new Item('item3', 2, 6),
     new Item('Aged Brie', 10, 3),
-    new Item('Aged Brie', 1, 33),
+    new Item('Aged Brie', 1, 48),
     new Item('Sulfuras, Hand of Ragnaros', 20, 20),
     new Item('Sulfuras, Hand of Ragnaros', 80, 20),
     new Item('Backstage passes to a TAFKAL80ETC concert', 11, 8),
