@@ -38,4 +38,73 @@ describe('Gilded Rose', function () {
         gildedRose.items.should.deep.equal(expectedItems);
     });
 
+    it('decreases the quality and sellIn value of a normal item', () => {
+        const item1: Item = new Item('item1', 10, 12);
+        const gildedRose = new GildedRose([item1]);
+        const expectedItem = [new Item('item1', 9, 11)];
+        gildedRose.updateQuality();
+        gildedRose.items.should.deep.equal(expectedItem);
+    })
+    it('never reduces quality below 0', () => {
+        const item1: Item = new Item('item1', 4, 2);
+        const gildedRose = new GildedRose([item1]);
+        const expectedItem = [new Item('item1', 0, 0)];
+        gildedRose.updateQuality();
+        gildedRose.updateQuality();
+        gildedRose.updateQuality();
+        gildedRose.updateQuality();
+        gildedRose.items.should.deep.equal(expectedItem);
+    })
+    it('reduces quality by 2 when sellIn value is negative', () => {
+        const item1: Item = new Item('item1', -4, 10);
+        const gildedRose = new GildedRose([item1]);
+        const expectedItem = [new Item('item1', -7, 4)];
+        gildedRose.updateQuality();
+        gildedRose.updateQuality();
+        gildedRose.updateQuality();
+        gildedRose.items.should.deep.equal(expectedItem);
+        
+    })
+    
+    describe('Aged Brie', () => {
+        it('increases quality 1 each day if sellIn value over 10', () => {
+            const item1: Item = new Item('Aged Brie', 15, 10);
+            const gildedRose = new GildedRose([item1]);
+            const expectedItem = [new Item('Aged Brie', 12, 13)];
+            gildedRose.updateQuality();
+            gildedRose.updateQuality();
+            gildedRose.updateQuality();
+            gildedRose.items.should.deep.equal(expectedItem);
+        })
+
+        
+        // it('increases quality by ')
+    })
+    describe('Backstage passes', () => {
+        it('increases quality by 2 if sellIn value less than 10', () => {
+            const backstagePass: Item = new Item('Backstage passes to a TAFKAL80ETC concert', 8, 10);
+            const gildedRose = new GildedRose([backstagePass]);
+            const expectedItem = [new Item('Backstage passes to a TAFKAL80ETC concert', 5, 16)];
+            gildedRose.updateQuality();
+            gildedRose.updateQuality();
+            gildedRose.updateQuality();
+            gildedRose.items.should.deep.equal(expectedItem);
+        });
+    });
+    
+    describe('Sulfuras', () => {
+
+        it('never decreases in quality from 80', () => {
+            const sulfuras: Item = new Item('Sulfuras, Hand of Ragnaros', 23, 80);
+            const gildedRose = new GildedRose([sulfuras]);
+            const expectedItem = [new Item('Sulfuras, Hand of Ragnaros', 23, 80)];
+            
+            gildedRose.updateQuality();
+            gildedRose.updateQuality();
+            gildedRose.updateQuality();
+    
+            gildedRose.items.should.deep.equal(expectedItem);
+        });
+    });
+
 });
