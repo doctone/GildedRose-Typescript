@@ -50,7 +50,9 @@ export class GildedRose {
                 }
             }
             if (this.items[i].name === 'Conjured Mana Cake'){
-                this.items[i].quality -= 2;
+                this.items[i].quality = this.items[i].sellIn < 0 
+                ? this.items[i].quality - 4
+                : this.items[i].quality - 2; 
             }
         }
         for (const item of this.items) {

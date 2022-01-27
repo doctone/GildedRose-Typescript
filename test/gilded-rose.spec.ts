@@ -119,6 +119,16 @@ describe('Gilded Rose', function () {
     
             gildedRose.items.should.deep.equal(expectedItem);
         });
+        it('lowers by 4 when sellIn value less than 0', () => {
+            const manaCake: Item = new Item('Conjured Mana Cake', 1, 10);
+            const gildedRose = new GildedRose([manaCake]);
+            const expectedItem = [new Item('Conjured Mana Cake', -2, 0)];
+            gildedRose.updateQuality();
+            gildedRose.updateQuality();
+            gildedRose.updateQuality();
+    
+            gildedRose.items.should.deep.equal(expectedItem);
+        });
     });
 
 });
